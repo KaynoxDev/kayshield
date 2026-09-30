@@ -26,7 +26,7 @@ export class EnvFileItem extends vscode.TreeItem {
     this.description =
       totalCount === 0
         ? vscode.l10n.t('empty')
-        : vscode.l10n.t('{0}/{1} protected', secretCount, totalCount);
+        : vscode.l10n.t('{0} of {1} protected', secretCount, totalCount);
     this.tooltip = vscode.l10n.t('Open {0} in the EnvShield editor', relativePath);
     this.command = {
       command: 'envshield.openEnvironmentFile',

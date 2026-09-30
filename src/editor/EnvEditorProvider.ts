@@ -425,7 +425,7 @@ function webviewStrings(): Record<string, string> {
     empty: vscode.l10n.t('(empty)'),
     noResults: vscode.l10n.t('No variable matches your search.'),
     noVariables: vscode.l10n.t('This file contains no variable yet.'),
-    protectedSummary: vscode.l10n.t('{0}/{1} protected'),
+    protectedSummary: vscode.l10n.t('{0} of {1} protected'),
     keyLabel: vscode.l10n.t('Name'),
     valueLabel: vscode.l10n.t('Value'),
     save: vscode.l10n.t('Save'),

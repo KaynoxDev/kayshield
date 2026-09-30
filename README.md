@@ -39,10 +39,10 @@ Click the eye to reveal one value. It re-masks itself after a few seconds. Hit `
 
 ## Screenshots
 
-![Streamer Mode](images/screenshot-streamer.png)
-
-_Streamer Mode: every sensitive value stays masked, and reveal is refused on the
-extension host rather than merely hidden in the interface._
+|                                                                                                                                                               |                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| ![The secure editor](images/screenshot-editor.png)                                                                                                            | ![Streamer Mode](images/screenshot-streamer.png)                                            |
+| Sensitive values are masked before the first frame is painted. `PORT`-style variables stay readable, because hiding everything would make the editor useless. | Streamer Mode: reveal is refused on the extension host, not merely hidden in the interface. |
 
 ---
 

@@ -86,11 +86,11 @@
   "Your .env files keep their exact format": "Vos fichiers .env conservent exactement leur format",
   "empty": "vide",
   "{0} is not an environment file.": "{0} n'est pas un fichier d'environnement.",
+  "{0} of {1} protected": "{0} sur {1} protégées",
   "{0} protected in this workspace": "{0} protégées dans cet espace de travail",
   "{0} revealed": "{0} révélées",
   "{0} values are currently visible. Click for actions.": "{0} valeurs sont actuellement visibles. Cliquez pour les actions.",
   "{0} values are visible right now": "{0} valeurs sont visibles actuellement",
   "{0} will always be masked.": "{0} sera toujours masquée.",
-  "{0} will be shown in clear text everywhere in EnvShield, including on a stream.": "{0} sera affichée en clair partout dans EnvShield, y compris pendant un live.",
-  "{0}/{1} protected": "{0}/{1} protégées"
+  "{0} will be shown in clear text everywhere in EnvShield, including on a stream.": "{0} sera affichée en clair partout dans EnvShield, y compris pendant un live."
 }
