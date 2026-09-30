@@ -1,0 +1,5 @@
+# Keep the repository in LF so the Prettier check passes on every platform.
+* text=auto eol=lf
+
+*.png binary
+*.vsix binary

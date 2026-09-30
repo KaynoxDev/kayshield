@@ -1,0 +1,509 @@
+{
+  "name": "envshield",
+  "displayName": "EnvShield",
+  "description": "%extension.description%",
+  "version": "1.0.0",
+  "publisher": "envshield",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "env",
+    "dotenv",
+    "secrets",
+    "streamer",
+    "security",
+    "screen sharing"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KaynoxDev/envshield.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KaynoxDev/envshield/issues"
+  },
+  "l10n": "./l10n",
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:dotenv",
+    "workspaceContains:**/.env*"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true,
+      "description": "%capabilities.untrusted%"
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "envshield.envEditor",
+        "displayName": "%editor.displayName%",
+        "selector": [
+          {
+            "filenamePattern": "**/.env"
+          },
+          {
+            "filenamePattern": "**/.env.*"
+          },
+          {
+            "filenamePattern": "**/*.env"
+          }
+        ],
+        "priority": "option"
+      }
+    ],
+    "languages": [
+      {
+        "id": "dotenv",
+        "aliases": [
+          "Env File",
+          "dotenv"
+        ],
+        "filenames": [
+          ".env"
+        ],
+        "filenamePatterns": [
+          ".env.*",
+          "*.env"
+        ],
+        "extensions": [
+          ".env"
+        ]
+      }
+    ],
+    "viewsWelcome": [
+      {
+        "view": "envshield.environment",
+        "contents": "%view.welcome%"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "envshield.environment",
+          "name": "%view.name%",
+          "icon": "$(shield)",
+          "contextualTitle": "EnvShield"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "envshield.openEnvironmentFile",
+        "title": "%cmd.openEnvironmentFile%",
+        "category": "EnvShield",
+        "icon": "$(shield)"
+      },
+      {
+        "command": "envshield.openAsPlainText",
+        "title": "%cmd.openAsPlainText%",
+        "category": "EnvShield",
+        "icon": "$(file-code)"
+      },
+      {
+        "command": "envshield.hideAllSecrets",
+        "title": "%cmd.hideAllSecrets%",
+        "category": "EnvShield",
+        "icon": "$(eye-closed)"
+      },
+      {
+        "command": "envshield.revealAllSecrets",
+        "title": "%cmd.revealAllSecrets%",
+        "category": "EnvShield",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "envshield.toggleStreamerMode",
+        "title": "%cmd.toggleStreamerMode%",
+        "category": "EnvShield",
+        "icon": "$(broadcast)"
+      },
+      {
+        "command": "envshield.scanWorkspace",
+        "title": "%cmd.scanWorkspace%",
+        "category": "EnvShield",
+        "icon": "$(search)"
+      },
+      {
+        "command": "envshield.configure",
+        "title": "%cmd.configure%",
+        "category": "EnvShield",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "envshield.revealVariable",
+        "title": "%cmd.revealVariable%",
+        "category": "EnvShield",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "envshield.hideVariable",
+        "title": "%cmd.hideVariable%",
+        "category": "EnvShield",
+        "icon": "$(eye-closed)"
+      },
+      {
+        "command": "envshield.copyVariableValue",
+        "title": "%cmd.copyVariableValue%",
+        "category": "EnvShield",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "envshield.refresh",
+        "title": "%cmd.refresh%",
+        "category": "EnvShield",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "envshield.setDefaultEditor",
+        "title": "%cmd.setDefaultEditor%",
+        "category": "EnvShield"
+      },
+      {
+        "command": "envshield.clearDefaultEditor",
+        "title": "%cmd.clearDefaultEditor%",
+        "category": "EnvShield"
+      },
+      {
+        "command": "envshield.showWelcome",
+        "title": "%cmd.showWelcome%",
+        "category": "EnvShield"
+      },
+      {
+        "command": "envshield.alwaysMaskVariable",
+        "title": "%cmd.alwaysMaskVariable%",
+        "category": "EnvShield"
+      },
+      {
+        "command": "envshield.neverMaskVariable",
+        "title": "%cmd.neverMaskVariable%",
+        "category": "EnvShield"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "envshield.toggleStreamerMode",
+        "key": "ctrl+shift+alt+e",
+        "mac": "cmd+shift+alt+e"
+      },
+      {
+        "command": "envshield.hideAllSecrets",
+        "key": "ctrl+shift+alt+h",
+        "mac": "cmd+shift+alt+h"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "envshield.revealVariable",
+          "when": "false"
+        },
+        {
+          "command": "envshield.hideVariable",
+          "when": "false"
+        },
+        {
+          "command": "envshield.copyVariableValue",
+          "when": "false"
+        },
+        {
+          "command": "envshield.alwaysMaskVariable",
+          "when": "false"
+        },
+        {
+          "command": "envshield.neverMaskVariable",
+          "when": "false"
+        },
+        {
+          "command": "envshield.refresh",
+          "when": "false"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "envshield.hideAllSecrets",
+          "when": "view == envshield.environment",
+          "group": "navigation@1"
+        },
+        {
+          "command": "envshield.toggleStreamerMode",
+          "when": "view == envshield.environment",
+          "group": "navigation@2"
+        },
+        {
+          "command": "envshield.scanWorkspace",
+          "when": "view == envshield.environment",
+          "group": "navigation@3"
+        },
+        {
+          "command": "envshield.refresh",
+          "when": "view == envshield.environment",
+          "group": "navigation@4"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "envshield.revealVariable",
+          "when": "view == envshield.environment && viewItem == envshield.variable.masked && !envshield.streamerMode",
+          "group": "inline@1"
+        },
+        {
+          "command": "envshield.hideVariable",
+          "when": "view == envshield.environment && viewItem == envshield.variable.revealed",
+          "group": "inline@1"
+        },
+        {
+          "command": "envshield.openAsPlainText",
+          "when": "view == envshield.environment && viewItem == envshield.file",
+          "group": "inline@1"
+        },
+        {
+          "command": "envshield.copyVariableValue",
+          "when": "view == envshield.environment && viewItem =~ /^envshield.variable/",
+          "group": "1_copy"
+        },
+        {
+          "command": "envshield.alwaysMaskVariable",
+          "when": "view == envshield.environment && viewItem =~ /^envshield.variable/",
+          "group": "2_rules@1"
+        },
+        {
+          "command": "envshield.neverMaskVariable",
+          "when": "view == envshield.environment && viewItem =~ /^envshield.variable/",
+          "group": "2_rules@2"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "envshield.openEnvironmentFile",
+          "when": "resourceFilename =~ /(^\\.env)|(\\.env$)/",
+          "group": "navigation@10"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "envshield.openAsPlainText",
+          "when": "activeCustomEditorId == envshield.envEditor",
+          "group": "navigation@1"
+        },
+        {
+          "command": "envshield.openEnvironmentFile",
+          "when": "resourceFilename =~ /(^\\.env)|(\\.env$)/ && activeCustomEditorId != envshield.envEditor",
+          "group": "navigation@1"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "EnvShield",
+      "properties": {
+        "envshield.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.enabled%"
+        },
+        "envshield.streamerMode": {
+          "type": "boolean",
+          "default": false,
+          "description": "%config.streamerMode%"
+        },
+        "envshield.revealTimeout": {
+          "type": "number",
+          "default": 5000,
+          "enum": [
+            0,
+            1000,
+            3000,
+            5000,
+            10000,
+            30000
+          ],
+          "enumDescriptions": [
+            "%config.revealTimeout.never%",
+            "1s",
+            "3s",
+            "5s",
+            "10s",
+            "30s"
+          ],
+          "description": "%config.revealTimeout%"
+        },
+        "envshield.maskCharacter": {
+          "type": "string",
+          "default": "•",
+          "maxLength": 1,
+          "minLength": 1,
+          "description": "%config.maskCharacter%"
+        },
+        "envshield.maskPreserveLength": {
+          "type": "boolean",
+          "default": false,
+          "description": "%config.maskPreserveLength%"
+        },
+        "envshield.autoDetectSecrets": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.autoDetectSecrets%"
+        },
+        "envshield.detectConfigFiles": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.detectConfigFiles%"
+        },
+        "envshield.protectEnvExample": {
+          "type": "boolean",
+          "default": false,
+          "description": "%config.protectEnvExample%"
+        },
+        "envshield.filePatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            ".env*",
+            "*.env"
+          ],
+          "description": "%config.filePatterns%"
+        },
+        "envshield.secretPatterns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "pattern"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "pattern": {
+                "type": "string"
+              },
+              "target": {
+                "type": "string",
+                "enum": [
+                  "value",
+                  "key"
+                ],
+                "default": "value"
+              },
+              "score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100,
+                "default": 100
+              }
+            }
+          },
+          "default": [],
+          "description": "%config.secretPatterns%"
+        },
+        "envshield.ignoredVariables": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "%config.ignoredVariables%"
+        },
+        "envshield.alwaysMask": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "%config.alwaysMask%"
+        },
+        "envshield.neverMask": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "PORT",
+            "NODE_ENV",
+            "DEBUG",
+            "HOST",
+            "APP_NAME",
+            "TZ",
+            "LANG"
+          ],
+          "description": "%config.neverMask%"
+        },
+        "envshield.maskThreshold": {
+          "type": "number",
+          "default": 61,
+          "minimum": 0,
+          "maximum": 100,
+          "description": "%config.maskThreshold%"
+        },
+        "envshield.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.showStatusBar%"
+        },
+        "envshield.scanOnStartup": {
+          "type": "boolean",
+          "default": false,
+          "description": "%config.scanOnStartup%"
+        },
+        "envshield.configFileGlobs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/*.json",
+            "**/*.yaml",
+            "**/*.yml",
+            "**/*.toml"
+          ],
+          "description": "%config.configFileGlobs%"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "compile:tests": "tsc -p tsconfig.test.json",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test:unit",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint src test --max-warnings 0",
+    "format": "prettier --write \"**/*.{ts,js,mjs,json,md,css,html}\"",
+    "format:check": "prettier --check \"**/*.{ts,js,mjs,json,md,css,html}\"",
+    "test:unit": "vitest run",
+    "test:unit:watch": "vitest",
+    "test:integration": "npm run build && npm run compile:tests && vscode-test",
+    "package": "vsce package --no-dependencies",
+    "vscode:prepublish": "npm run check && npm run build -- --minify"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/jsdom": "^30.0.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.10.0",
+    "@types/vscode": "^1.95.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "@vscode/vsce": "^3.2.1",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.17.0",
+    "jsdom": "^30.0.1",
+    "mocha": "^11.0.1",
+    "prettier": "^3.4.2",
+    "typescript": "^6.0.3",
+    "vitest": "^2.1.8"
+  },
+  "homepage": "https://github.com/KaynoxDev/envshield#readme"
+}

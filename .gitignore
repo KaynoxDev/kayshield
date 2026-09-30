@@ -1,0 +1,15 @@
+node_modules
+dist
+out
+tmp
+coverage
+*.vsix
+.vscode-test
+test/fixtures/.vscode
+
+# Never commit a real environment file. The test fixtures are the one exception,
+# and they contain only fake values.
+.env
+.env.*
+!test/fixtures/.env
+!test/fixtures/.env.example
