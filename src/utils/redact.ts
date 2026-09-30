@@ -1,7 +1,7 @@
 /**
  * Redaction helpers.
  *
- * Every string that leaves EnvShield - log line, notification, diagnostic,
+ * Every string that leaves KayShield - log line, notification, diagnostic,
  * error message, tooltip - goes through this module first. The rule is
  * deliberately blunt: it is better to redact something harmless than to leak
  * one token.

@@ -1,4 +1,4 @@
-/** Single registration point for every EnvShield command. */
+/** Single registration point for every KayShield command. */
 
 import * as vscode from 'vscode';
 import { WelcomePanel } from '../welcome/WelcomePanel';
@@ -23,22 +23,22 @@ type CommandHandler = (...args: any[]) => unknown;
 
 export function registerCommands(context: CommandContext): vscode.Disposable[] {
   const commands: Record<string, CommandHandler> = {
-    'envshield.openEnvironmentFile': openEnvironmentFile(context),
-    'envshield.openAsPlainText': openAsPlainText(),
-    'envshield.hideAllSecrets': hideAllSecrets(context),
-    'envshield.revealAllSecrets': revealAllSecrets(context),
-    'envshield.toggleStreamerMode': toggleStreamerMode(context),
-    'envshield.scanWorkspace': scanWorkspace(context),
-    'envshield.configure': configure(context),
-    'envshield.revealVariable': revealVariable(context),
-    'envshield.hideVariable': hideVariable(context),
-    'envshield.copyVariableValue': copyVariableValue(),
-    'envshield.refresh': () => context.tree.reload(),
-    'envshield.setDefaultEditor': setDefaultEditor(),
-    'envshield.clearDefaultEditor': clearDefaultEditor(),
-    'envshield.showWelcome': () => WelcomePanel.show(context.extensionContext),
-    'envshield.alwaysMaskVariable': alwaysMaskVariable(context),
-    'envshield.neverMaskVariable': neverMaskVariable(context),
+    'kayshield.openEnvironmentFile': openEnvironmentFile(context),
+    'kayshield.openAsPlainText': openAsPlainText(),
+    'kayshield.hideAllSecrets': hideAllSecrets(context),
+    'kayshield.revealAllSecrets': revealAllSecrets(context),
+    'kayshield.toggleStreamerMode': toggleStreamerMode(context),
+    'kayshield.scanWorkspace': scanWorkspace(context),
+    'kayshield.configure': configure(context),
+    'kayshield.revealVariable': revealVariable(context),
+    'kayshield.hideVariable': hideVariable(context),
+    'kayshield.copyVariableValue': copyVariableValue(),
+    'kayshield.refresh': () => context.tree.reload(),
+    'kayshield.setDefaultEditor': setDefaultEditor(),
+    'kayshield.clearDefaultEditor': clearDefaultEditor(),
+    'kayshield.showWelcome': () => WelcomePanel.show(context.extensionContext),
+    'kayshield.alwaysMaskVariable': alwaysMaskVariable(context),
+    'kayshield.neverMaskVariable': neverMaskVariable(context),
   };
 
   return Object.entries(commands).map(([id, handler]) =>

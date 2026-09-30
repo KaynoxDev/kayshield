@@ -4,7 +4,7 @@
  * These run inside a real VS Code instance against the fixture workspace in
  * `test/fixtures`. They cover the parts a unit test cannot reach: command
  * registration, the custom editor, reveal timers and the guarantee that opening
- * a file in EnvShield never modifies it.
+ * a file in KayShield never modifies it.
  */
 
 import * as assert from 'node:assert/strict';
@@ -28,7 +28,7 @@ function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-describe('EnvShield extension', () => {
+describe('KayShield extension', () => {
   before(async () => {
     const extension = vscode.extensions.getExtension(EXTENSION_ID);
     assert.ok(extension, 'the extension must be installed in the test host');
@@ -38,40 +38,40 @@ describe('EnvShield extension', () => {
   after(async () => {
     await vscode.commands.executeCommand('workbench.action.closeAllEditors');
     await vscode.workspace
-      .getConfiguration('envshield')
+      .getConfiguration('kayshield')
       .update('streamerMode', undefined, vscode.ConfigurationTarget.Workspace);
   });
 
   it('registers every contributed command', async () => {
     const registered = await vscode.commands.getCommands(true);
     const expected = [
-      'envshield.openEnvironmentFile',
-      'envshield.openAsPlainText',
-      'envshield.hideAllSecrets',
-      'envshield.revealAllSecrets',
-      'envshield.toggleStreamerMode',
-      'envshield.scanWorkspace',
-      'envshield.configure',
-      'envshield.revealVariable',
-      'envshield.hideVariable',
-      'envshield.copyVariableValue',
-      'envshield.refresh',
-      'envshield.setDefaultEditor',
-      'envshield.clearDefaultEditor',
-      'envshield.showWelcome',
-      'envshield.alwaysMaskVariable',
-      'envshield.neverMaskVariable',
+      'kayshield.openEnvironmentFile',
+      'kayshield.openAsPlainText',
+      'kayshield.hideAllSecrets',
+      'kayshield.revealAllSecrets',
+      'kayshield.toggleStreamerMode',
+      'kayshield.scanWorkspace',
+      'kayshield.configure',
+      'kayshield.revealVariable',
+      'kayshield.hideVariable',
+      'kayshield.copyVariableValue',
+      'kayshield.refresh',
+      'kayshield.setDefaultEditor',
+      'kayshield.clearDefaultEditor',
+      'kayshield.showWelcome',
+      'kayshield.alwaysMaskVariable',
+      'kayshield.neverMaskVariable',
     ];
     for (const command of expected) {
       assert.ok(registered.includes(command), `${command} is not registered`);
     }
   });
 
-  it('opens a .env file in the EnvShield editor without modifying it', async () => {
+  it('opens a .env file in the KayShield editor without modifying it', async () => {
     const uri = fixture('.env');
     const before = await vscode.workspace.fs.readFile(uri);
 
-    await vscode.commands.executeCommand('vscode.openWith', uri, 'envshield.envEditor');
+    await vscode.commands.executeCommand('vscode.openWith', uri, 'kayshield.envEditor');
     await delay(600);
 
     const after = await vscode.workspace.fs.readFile(uri);
@@ -93,7 +93,7 @@ describe('EnvShield extension', () => {
 
   it('can still open the same file as plain text', async () => {
     const uri = fixture('.env');
-    await vscode.commands.executeCommand('envshield.openAsPlainText', uri);
+    await vscode.commands.executeCommand('kayshield.openAsPlainText', uri);
     await delay(400);
     const editor = vscode.window.activeTextEditor;
     assert.ok(editor, 'a text editor must be active');
@@ -104,26 +104,26 @@ describe('EnvShield extension', () => {
 
   it('toggles Streamer Mode and persists it', async () => {
     const read = (): boolean =>
-      vscode.workspace.getConfiguration('envshield').get<boolean>('streamerMode', false);
+      vscode.workspace.getConfiguration('kayshield').get<boolean>('streamerMode', false);
 
     const initial = read();
-    await vscode.commands.executeCommand('envshield.toggleStreamerMode');
+    await vscode.commands.executeCommand('kayshield.toggleStreamerMode');
     await delay(300);
     assert.equal(read(), !initial, 'the setting must follow the toggle');
 
-    await vscode.commands.executeCommand('envshield.toggleStreamerMode');
+    await vscode.commands.executeCommand('kayshield.toggleStreamerMode');
     await delay(300);
     assert.equal(read(), initial, 'toggling twice must return to the initial state');
   });
 
   it('runs a workspace scan and reports diagnostics without values', async () => {
-    await vscode.commands.executeCommand('envshield.scanWorkspace');
+    await vscode.commands.executeCommand('kayshield.scanWorkspace');
     await delay(1500);
 
     const all = vscode.languages.getDiagnostics();
     const ours = all.flatMap(([uri, diagnostics]) =>
       diagnostics
-        .filter((diagnostic) => diagnostic.source === 'EnvShield')
+        .filter((diagnostic) => diagnostic.source === 'KayShield')
         .map((diagnostic) => ({ uri, diagnostic })),
     );
 
@@ -139,7 +139,7 @@ describe('EnvShield extension', () => {
   it('does not flag the template file', async () => {
     const diagnostics = vscode.languages.getDiagnostics(fixture('.env.example'));
     assert.equal(
-      diagnostics.filter((diagnostic) => diagnostic.source === 'EnvShield').length,
+      diagnostics.filter((diagnostic) => diagnostic.source === 'KayShield').length,
       0,
       '.env.example must be treated as public by default',
     );

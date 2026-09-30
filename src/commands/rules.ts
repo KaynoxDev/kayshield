@@ -32,7 +32,7 @@ export function neverMaskVariable(context: CommandContext) {
     const confirm = vscode.l10n.t('Never mask it');
     const choice = await vscode.window.showWarningMessage(
       vscode.l10n.t(
-        '{0} will be shown in clear text everywhere in EnvShield, including on a stream.',
+        '{0} will be shown in clear text everywhere in KayShield, including on a stream.',
         key,
       ),
       { modal: true },

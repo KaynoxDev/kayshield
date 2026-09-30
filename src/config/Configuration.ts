@@ -1,5 +1,5 @@
 /**
- * Typed, cached access to `envshield.*` settings.
+ * Typed, cached access to `kayshield.*` settings.
  *
  * This is the only module that reads workspace configuration. Everything else
  * receives plain data, which keeps the core testable and makes it obvious where
@@ -12,12 +12,12 @@ import type { UserPattern } from '../security/SecretDetector';
 import { normalizeMaskCharacter } from '../security/MaskingEngine';
 import { DEFAULT_FILE_PATTERNS } from '../env/EnvFileDetector';
 
-export const CONFIG_SECTION = 'envshield';
+export const CONFIG_SECTION = 'kayshield';
 
 /** Reveal timeouts offered by the settings UI, in milliseconds. */
 export const REVEAL_TIMEOUTS = [0, 1000, 3000, 5000, 10000, 30000] as const;
 
-export interface EnvShieldSettings {
+export interface KayShieldSettings {
   readonly enabled: boolean;
   readonly streamerMode: boolean;
   readonly revealTimeout: number;
@@ -79,8 +79,8 @@ function readUserPatterns(config: vscode.WorkspaceConfiguration): readonly UserP
  * Configuration lookups are cheap but not free, and detection runs per variable.
  */
 export class Configuration implements vscode.Disposable {
-  private cached: EnvShieldSettings;
-  private readonly emitter = new vscode.EventEmitter<EnvShieldSettings>();
+  private cached: KayShieldSettings;
+  private readonly emitter = new vscode.EventEmitter<KayShieldSettings>();
   private readonly disposables: vscode.Disposable[] = [];
 
   readonly onDidChange = this.emitter.event;
@@ -98,7 +98,7 @@ export class Configuration implements vscode.Disposable {
     );
   }
 
-  get settings(): EnvShieldSettings {
+  get settings(): KayShieldSettings {
     return this.cached;
   }
 
@@ -114,7 +114,7 @@ export class Configuration implements vscode.Disposable {
     };
   }
 
-  static read(): EnvShieldSettings {
+  static read(): KayShieldSettings {
     const config = vscode.workspace.getConfiguration(CONFIG_SECTION);
     const revealTimeout = config.get<number>('revealTimeout', 5000);
     return {

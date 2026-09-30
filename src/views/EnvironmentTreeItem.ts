@@ -1,5 +1,5 @@
 /**
- * Tree items for the EnvShield Explorer section.
+ * Tree items for the KayShield Explorer section.
  *
  * SECURITY: a masked item's `description` and `tooltip` contain mask characters
  * and a value-free explanation. The real value only appears in `description`
@@ -12,7 +12,7 @@ import type { EnvironmentVariable, SecretSeverity } from '../types';
 export type EnvTreeItem = EnvFileItem | EnvVariableItem | EnvMessageItem;
 
 export class EnvFileItem extends vscode.TreeItem {
-  override readonly contextValue = 'envshield.file';
+  override readonly contextValue = 'kayshield.file';
 
   constructor(
     readonly uri: vscode.Uri,
@@ -27,9 +27,9 @@ export class EnvFileItem extends vscode.TreeItem {
       totalCount === 0
         ? vscode.l10n.t('empty')
         : vscode.l10n.t('{0} of {1} protected', secretCount, totalCount);
-    this.tooltip = vscode.l10n.t('Open {0} in the EnvShield editor', relativePath);
+    this.tooltip = vscode.l10n.t('Open {0} in the KayShield editor', relativePath);
     this.command = {
-      command: 'envshield.openEnvironmentFile',
+      command: 'kayshield.openEnvironmentFile',
       title: vscode.l10n.t('Open Environment File'),
       arguments: [uri],
     };
@@ -64,9 +64,9 @@ export class EnvVariableItem extends vscode.TreeItem {
     this.iconPath = severityIcon(variable.severity, variable.masked);
     this.contextValue = variable.secret
       ? variable.masked
-        ? 'envshield.variable.masked'
-        : 'envshield.variable.revealed'
-      : 'envshield.variable.plain';
+        ? 'kayshield.variable.masked'
+        : 'kayshield.variable.revealed'
+      : 'kayshield.variable.plain';
 
     // Value-free tooltip: severity, score and the detector's reason only.
     const tooltip = new vscode.MarkdownString();
@@ -78,7 +78,7 @@ export class EnvVariableItem extends vscode.TreeItem {
     this.tooltip = tooltip;
 
     this.command = {
-      command: 'envshield.openEnvironmentFile',
+      command: 'kayshield.openEnvironmentFile',
       title: vscode.l10n.t('Open Environment File'),
       arguments: [uri],
     };

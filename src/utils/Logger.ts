@@ -1,7 +1,7 @@
 /**
  * Logging.
  *
- * There is exactly one way to log in EnvShield, and it redacts. `safeLog` runs
+ * There is exactly one way to log in KayShield, and it redacts. `safeLog` runs
  * every message and every argument through {@link redactText} before anything
  * reaches the output channel, so a `.env` value cannot end up in a log file,
  * a bug report or a screen recording of the Output panel.
@@ -18,7 +18,7 @@ let channel: vscode.LogOutputChannel | undefined;
 
 /** Creates the shared output channel. Call once, from `activate`. */
 export function initializeLogger(): vscode.LogOutputChannel {
-  channel ??= vscode.window.createOutputChannel('EnvShield', { log: true });
+  channel ??= vscode.window.createOutputChannel('KayShield', { log: true });
   return channel;
 }
 

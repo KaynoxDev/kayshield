@@ -11,7 +11,7 @@
     },
     {
       // Same as above, with every other extension disabled. Use this to tell
-      // EnvShield's own errors apart from those of the extensions installed in
+      // KayShield's own errors apart from those of the extensions installed in
       // your normal profile - the Debug Console of a dev host shows both.
       "name": "Run Extension (isolated)",
       "type": "extensionHost",

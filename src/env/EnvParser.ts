@@ -6,7 +6,7 @@
  *     including comments, blank lines and lines we do not understand.
  *  2. Record precise ranges so a single value can be rewritten without
  *     touching the rest of the file.
- *  3. Match dotenv semantics closely enough that what EnvShield shows is what
+ *  3. Match dotenv semantics closely enough that what KayShield shows is what
  *     Node.js, Python, Docker and .NET will load.
  *
  * Pure module: no `vscode` import.

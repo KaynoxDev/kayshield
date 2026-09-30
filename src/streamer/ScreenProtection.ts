@@ -8,7 +8,7 @@
  * HONEST LIMITS - documented in the README and surfaced in the UI:
  * VS Code offers no API to mask the integrated terminal buffer, the debug
  * console, another extension's webview or an output channel written by someone
- * else. Screen Safe therefore protects what EnvShield renders, and nothing
+ * else. Screen Safe therefore protects what KayShield renders, and nothing
  * else. We never claim otherwise.
  */
 

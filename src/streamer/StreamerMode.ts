@@ -14,7 +14,7 @@ import { Configuration } from '../config/Configuration';
 import { logger } from '../utils/Logger';
 import type { ScreenProtection } from './ScreenProtection';
 
-export const STREAMER_MODE_CONTEXT_KEY = 'envshield.streamerMode';
+export const STREAMER_MODE_CONTEXT_KEY = 'kayshield.streamerMode';
 
 export class StreamerMode implements vscode.Disposable {
   private readonly disposables: vscode.Disposable[] = [];

@@ -1,12 +1,12 @@
-# Publishing EnvShield
+# Publishing KayShield
 
 ## Manifest status
 
 Every placeholder is gone: `publisher` is `KaynoxDev`, and `repository`, `bugs`
-and `homepage` point at <https://github.com/KaynoxDev/envshield>, from which the
+and `homepage` point at <https://github.com/KaynoxDev/kayshield>, from which the
 README images resolve.
 
-The extension identifier is `KaynoxDev.envshield`. It is never hardcoded in the
+The extension identifier is `KaynoxDev.kayshield`. It is never hardcoded in the
 source - the settings menu reads it from `context.extension.id` and the
 integration suite from the manifest - so changing the publisher cannot leave a
 stale literal behind.
@@ -19,7 +19,7 @@ wall of broken images. Re-check after any change to the README or the repo:
 
 ```bash
 npm run package
-unzip -p envshield-1.0.0.vsix extension/readme.md   | grep -oE 'https://[^ ")]*\.png' | sort -u   | while read -r url; do echo "$(curl -s -o /dev/null -w '%{http_code}' -L "$url")  $url"; done
+unzip -p kayshield-1.0.0.vsix extension/readme.md   | grep -oE 'https://[^ ")]*\.png' | sort -u   | while read -r url; do echo "$(curl -s -o /dev/null -w '%{http_code}' -L "$url")  $url"; done
 ```
 
 Every line must start with `200`.
@@ -33,7 +33,7 @@ All you strictly need is a Microsoft account and a publisher.
    with any Microsoft account.
 
    The **publisher ID is permanent**. It becomes part of the extension URL
-   (`marketplace.visualstudio.com/items?itemName=<publisher>.envshield`) and of
+   (`marketplace.visualstudio.com/items?itemName=<publisher>.kayshield`) and of
    the install command, and it cannot be renamed later.
 
 2. **Set it in the manifest** — `package.json` → `"publisher": "<your-id>"`. It
@@ -46,7 +46,7 @@ All you strictly need is a Microsoft account and a publisher.
    ```
 
    Then <https://marketplace.visualstudio.com/manage> → your publisher →
-   _New extension_ → _Visual Studio Code_ → drop `envshield-1.0.0.vsix`.
+   _New extension_ → _Visual Studio Code_ → drop `kayshield-1.0.0.vsix`.
 
 That is the whole process. The trade-off is that every future release means
 repeating the build and the upload by hand.
@@ -112,7 +112,7 @@ To test the real packaged artifact, or to use it privately:
 
 ```bash
 npx vsce package --no-dependencies
-code --install-extension envshield-1.0.0.vsix
+code --install-extension kayshield-1.0.0.vsix
 ```
 
 This is also how you distribute it inside a company without publishing.
@@ -125,7 +125,7 @@ those editors — publishing to Open VSX as well is usually worth it:
 
 ```bash
 npx ovsx create-namespace <your-publisher-id> -p <open-vsx-token>
-npx ovsx publish envshield-1.0.0.vsix -p <open-vsx-token>
+npx ovsx publish kayshield-1.0.0.vsix -p <open-vsx-token>
 ```
 
 Tokens come from <https://open-vsx.org> (sign in with GitHub → _Access Tokens_).

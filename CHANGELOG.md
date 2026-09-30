@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to EnvShield are documented here.
+All notable changes to KayShield are documented here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -29,22 +29,22 @@ First public release.
   webhook), Google API keys, SendGrid, npm, Twilio, Square, Google OAuth
   secrets, PEM blocks, URLs carrying credentials and hardcoded bearer tokens.
 - Entropy analysis with guards against URLs, paths, prose, booleans and numbers.
-- User-defined patterns through `envshield.secretPatterns`.
+- User-defined patterns through `kayshield.secretPatterns`.
 - `alwaysMask`, `neverMask` and `ignoredVariables` rules, with glob support.
 
 **Streamer Mode and Screen Safe**
 
-- `EnvShield: Toggle Streamer Mode` (`Ctrl+Shift+Alt+E`), persisted across reloads.
+- `KayShield: Toggle Streamer Mode` (`Ctrl+Shift+Alt+E`), persisted across reloads.
 - Reveal is refused on the extension host while engaged, not merely hidden in the UI.
-- Panic button `EnvShield: Hide All Secrets` (`Ctrl+Shift+Alt+H`) cancelling every
+- Panic button `KayShield: Hide All Secrets` (`Ctrl+Shift+Alt+H`) cancelling every
   timer and re-masking every surface.
 - Automatic re-masking when the editor tab is hidden or the window loses focus.
 - `ProtectionProvider` extension point for future protected surfaces.
 
 **Workspace**
 
-- EnvShield section in the Explorer listing environment files and their variables.
-- `EnvShield: Scan Workspace` reporting hardcoded secrets in `.json`, `.yaml`,
+- KayShield section in the Explorer listing environment files and their variables.
+- `KayShield: Scan Workspace` reporting hardcoded secrets in `.json`, `.yaml`,
   `.yml` and `.toml` as VS Code diagnostics.
 - Ignored findings stored as salted SHA-256 fingerprints in `SecretStorage`.
 - Status bar item with three states: Protected, _n_ revealed, Stream Safe.
@@ -67,7 +67,7 @@ First public release.
 
 ### Known limitations
 
-EnvShield protects what it renders inside VS Code. The extension API provides no
+KayShield protects what it renders inside VS Code. The extension API provides no
 way to mask the integrated terminal, the debug console, output channels owned by
 other extensions, Git diff views, or anything outside the editor. These are
 documented rather than faked.

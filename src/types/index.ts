@@ -1,5 +1,5 @@
 /**
- * Core domain types shared across EnvShield.
+ * Core domain types shared across KayShield.
  *
  * SECURITY: nothing in this file (or in anything it imports) may depend on the
  * `vscode` module. The parsing and detection layers are deliberately pure so they
@@ -77,7 +77,7 @@ export interface EnvDocumentAst {
 
 export type SecretSeverity = 'normal' | 'suspicious' | 'sensitive' | 'secret';
 
-/** Score bands, as specified by the EnvShield scoring model. */
+/** Score bands, as specified by the KayShield scoring model. */
 export const SEVERITY_BANDS = {
   normal: { min: 0, max: 30 },
   suspicious: { min: 31, max: 60 },

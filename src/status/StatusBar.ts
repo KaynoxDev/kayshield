@@ -4,7 +4,7 @@
  * Three states, deliberately unmistakable at a glance on a stream overlay:
  *  - protection engaged  -> "Stream Safe" with the warning background,
  *  - values revealed     -> a count, so nothing is visible without you knowing,
- *  - idle                -> "EnvShield".
+ *  - idle                -> "KayShield".
  */
 
 import * as vscode from 'vscode';
@@ -26,12 +26,12 @@ export class StatusBar implements vscode.Disposable {
 
   constructor(private readonly deps: StatusBarDependencies) {
     this.item = vscode.window.createStatusBarItem(
-      'envshield.status',
+      'kayshield.status',
       vscode.StatusBarAlignment.Right,
       100,
     );
-    this.item.name = 'EnvShield';
-    this.item.command = 'envshield.configure';
+    this.item.name = 'KayShield';
+    this.item.command = 'kayshield.configure';
 
     this.disposables.push(
       this.item,
@@ -56,7 +56,7 @@ export class StatusBar implements vscode.Disposable {
     if (engaged) {
       this.item.text = `$(broadcast) ${vscode.l10n.t('Stream Safe')}`;
       this.item.tooltip = vscode.l10n.t(
-        'Streamer Mode is on: EnvShield keeps every sensitive value masked. Click for actions.',
+        'Streamer Mode is on: KayShield keeps every sensitive value masked. Click for actions.',
       );
       this.item.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
     } else if (revealed > 0) {
@@ -68,7 +68,7 @@ export class StatusBar implements vscode.Disposable {
       this.item.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
     } else {
       this.item.text = `$(shield) ${vscode.l10n.t('Protected')}`;
-      this.item.tooltip = vscode.l10n.t('EnvShield is watching your environment files.');
+      this.item.tooltip = vscode.l10n.t('KayShield is watching your environment files.');
       this.item.backgroundColor = undefined;
     }
 

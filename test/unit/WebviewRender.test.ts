@@ -108,7 +108,7 @@ function mount(initial = payload()): Harness {
   const dom = new JSDOM(
     `<!DOCTYPE html><html><body>
       <div id="app" aria-busy="true"></div>
-      <script id="envshield-payload" type="application/json">${serialized}</script>
+      <script id="kayshield-payload" type="application/json">${serialized}</script>
     </body></html>`,
     { runScripts: 'outside-only' },
   );

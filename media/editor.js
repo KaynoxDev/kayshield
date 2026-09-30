@@ -1,5 +1,5 @@
 /*
- * EnvShield secure editor - webview script.
+ * KayShield secure editor - webview script.
  *
  * SECURITY MODEL
  * --------------
@@ -23,7 +23,7 @@
   'use strict';
 
   const vscode = acquireVsCodeApi();
-  const payloadNode = document.getElementById('envshield-payload');
+  const payloadNode = document.getElementById('kayshield-payload');
   const initial = JSON.parse(payloadNode.textContent);
 
   /** @type {Record<string,string>} */

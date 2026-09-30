@@ -1,5 +1,5 @@
 /**
- * Decides whether a file is an environment file EnvShield should handle, and
+ * Decides whether a file is an environment file KayShield should handle, and
  * whether it should be treated as a public template.
  *
  * Pure module (filename-based only): no `vscode` import, no filesystem access.

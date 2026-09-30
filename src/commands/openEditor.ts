@@ -1,7 +1,7 @@
 /**
  * Opening files, both ways.
  *
- * EnvShield never takes an editor hostage: "Open as Plain Text" is one command
+ * KayShield never takes an editor hostage: "Open as Plain Text" is one command
  * away, and the custom editor is contributed with `priority: "option"` so the
  * default association is unchanged until the user asks for it.
  */
@@ -43,7 +43,7 @@ function activeTabUri(): vscode.Uri | undefined {
   return vscode.window.activeTextEditor?.document.uri;
 }
 
-/** Opens a file in the EnvShield editor, picking one if none is given. */
+/** Opens a file in the KayShield editor, picking one if none is given. */
 export function openEnvironmentFile(context: CommandContext) {
   return async (target?: unknown): Promise<void> => {
     const uri = resolveUri(target) ?? (await pickEnvironmentFile(context));
@@ -96,7 +96,7 @@ async function pickEnvironmentFile(context: CommandContext): Promise<vscode.Uri 
   return picked?.uri;
 }
 
-/** Makes EnvShield the default editor for `.env` files. */
+/** Makes KayShield the default editor for `.env` files. */
 export function setDefaultEditor() {
   return async (): Promise<void> => {
     const config = vscode.workspace.getConfiguration('workbench');
@@ -107,7 +107,7 @@ export function setDefaultEditor() {
     }
     await config.update('editorAssociations', updated, vscode.ConfigurationTarget.Global);
     await vscode.window.showInformationMessage(
-      vscode.l10n.t('EnvShield is now the default editor for .env files.'),
+      vscode.l10n.t('KayShield is now the default editor for .env files.'),
     );
   };
 }

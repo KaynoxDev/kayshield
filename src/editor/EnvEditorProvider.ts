@@ -33,7 +33,7 @@ import {
   type WebviewState,
 } from './protocol';
 
-export const ENV_EDITOR_VIEW_TYPE = 'envshield.envEditor';
+export const ENV_EDITOR_VIEW_TYPE = 'kayshield.envEditor';
 
 /** How long we wait after a document change before re-rendering. */
 const REPARSE_DEBOUNCE_MS = 120;
@@ -221,7 +221,7 @@ export class EnvEditorProvider implements vscode.CustomTextEditorProvider, vscod
       }
 
       case 'toggleStreamerMode':
-        await vscode.commands.executeCommand('envshield.toggleStreamerMode');
+        await vscode.commands.executeCommand('kayshield.toggleStreamerMode');
         return;
 
       case 'copy': {
@@ -371,7 +371,7 @@ export class EnvEditorProvider implements vscode.CustomTextEditorProvider, vscod
   </head>
   <body>
     <div id="app" aria-busy="true"></div>
-    <script id="envshield-payload" type="application/json" nonce="${nonce}">${serialized}</script>
+    <script id="kayshield-payload" type="application/json" nonce="${nonce}">${serialized}</script>
     <script nonce="${nonce}" src="${scriptUri}"></script>
   </body>
 </html>`;

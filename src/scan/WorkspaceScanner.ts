@@ -33,7 +33,7 @@ export interface ScanSummary {
 }
 
 export class WorkspaceScanner implements vscode.Disposable {
-  private readonly diagnostics = vscode.languages.createDiagnosticCollection('envshield');
+  private readonly diagnostics = vscode.languages.createDiagnosticCollection('kayshield');
   private readonly disposables: vscode.Disposable[] = [];
   private scanner: SecurityScanner;
   private lastNotifiedCount = -1;
@@ -123,7 +123,7 @@ export class WorkspaceScanner implements vscode.Disposable {
       return await vscode.window.withProgress(
         {
           location: vscode.ProgressLocation.Window,
-          title: vscode.l10n.t('EnvShield: scanning workspace'),
+          title: vscode.l10n.t('KayShield: scanning workspace'),
         },
         async (_progress, token) => this.runScan(token),
       );
@@ -239,7 +239,7 @@ export class WorkspaceScanner implements vscode.Disposable {
             ? vscode.DiagnosticSeverity.Warning
             : vscode.DiagnosticSeverity.Information,
         );
-        diagnostic.source = 'EnvShield';
+        diagnostic.source = 'KayShield';
         diagnostic.code = finding.severity;
         return diagnostic;
       }),
@@ -255,7 +255,7 @@ export class WorkspaceScanner implements vscode.Disposable {
       if (this.lastNotifiedCount !== 0) {
         this.lastNotifiedCount = 0;
         await vscode.window.showInformationMessage(
-          vscode.l10n.t('EnvShield found no exposed secret in {0} files.', summary.fileCount),
+          vscode.l10n.t('KayShield found no exposed secret in {0} files.', summary.fileCount),
         );
       }
       return;
@@ -268,7 +268,7 @@ export class WorkspaceScanner implements vscode.Disposable {
     const review = vscode.l10n.t('Review');
     const ignore = vscode.l10n.t('Ignore these');
     const choice = await vscode.window.showWarningMessage(
-      vscode.l10n.t('EnvShield detected {0} potential secrets.', summary.findingCount),
+      vscode.l10n.t('KayShield detected {0} potential secrets.', summary.findingCount),
       review,
       ignore,
     );

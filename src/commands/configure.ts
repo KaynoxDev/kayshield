@@ -1,7 +1,7 @@
 /**
- * The EnvShield menu.
+ * The KayShield menu.
  *
- * Reachable from the status bar and from `EnvShield: Configure`. A quick pick
+ * Reachable from the status bar and from `KayShield: Configure`. A quick pick
  * rather than a settings webview: it is native, keyboard-first, screen-reader
  * friendly and costs nothing to render.
  */
@@ -28,7 +28,7 @@ export function configure(context: CommandContext) {
         description: engaged
           ? vscode.l10n.t('Values can be revealed again')
           : vscode.l10n.t('Keep every sensitive value masked'),
-        run: () => vscode.commands.executeCommand('envshield.toggleStreamerMode'),
+        run: () => vscode.commands.executeCommand('kayshield.toggleStreamerMode'),
       },
       {
         label: '$(eye-closed) ' + vscode.l10n.t('Hide all secrets'),
@@ -36,18 +36,18 @@ export function configure(context: CommandContext) {
           revealed > 0
             ? vscode.l10n.t('{0} values are visible right now', revealed)
             : vscode.l10n.t('Nothing is visible'),
-        run: () => vscode.commands.executeCommand('envshield.hideAllSecrets'),
+        run: () => vscode.commands.executeCommand('kayshield.hideAllSecrets'),
       },
       {
         label: '$(shield) ' + vscode.l10n.t('Open environment file'),
-        run: () => vscode.commands.executeCommand('envshield.openEnvironmentFile'),
+        run: () => vscode.commands.executeCommand('kayshield.openEnvironmentFile'),
       },
       {
         label: '$(search) ' + vscode.l10n.t('Scan workspace'),
-        run: () => vscode.commands.executeCommand('envshield.scanWorkspace'),
+        run: () => vscode.commands.executeCommand('kayshield.scanWorkspace'),
       },
       {
-        label: '$(gear) ' + vscode.l10n.t('Open EnvShield settings'),
+        label: '$(gear) ' + vscode.l10n.t('Open KayShield settings'),
         // Derived, never hardcoded: the identifier changes with the publisher,
         // and a stale literal here silently opens an empty settings page.
         run: () =>
@@ -57,12 +57,12 @@ export function configure(context: CommandContext) {
           ),
       },
       {
-        label: '$(file-code) ' + vscode.l10n.t('Use EnvShield as the default .env editor'),
-        run: () => vscode.commands.executeCommand('envshield.setDefaultEditor'),
+        label: '$(file-code) ' + vscode.l10n.t('Use KayShield as the default .env editor'),
+        run: () => vscode.commands.executeCommand('kayshield.setDefaultEditor'),
       },
       {
-        label: '$(info) ' + vscode.l10n.t('About EnvShield'),
-        run: () => vscode.commands.executeCommand('envshield.showWelcome'),
+        label: '$(info) ' + vscode.l10n.t('About KayShield'),
+        run: () => vscode.commands.executeCommand('kayshield.showWelcome'),
       },
       {
         label: '$(output) ' + vscode.l10n.t('Show logs'),
@@ -74,7 +74,7 @@ export function configure(context: CommandContext) {
     ];
 
     const picked = await vscode.window.showQuickPick(items, {
-      title: 'EnvShield',
+      title: 'KayShield',
       placeHolder: vscode.l10n.t('Choose an action'),
       matchOnDescription: true,
     });
@@ -82,7 +82,7 @@ export function configure(context: CommandContext) {
   };
 }
 
-/** Opens the settings UI filtered on one EnvShield setting. */
+/** Opens the settings UI filtered on one KayShield setting. */
 export function openSetting(key: string): Thenable<unknown> {
   return vscode.commands.executeCommand(
     'workbench.action.openSettings',

@@ -1,7 +1,7 @@
 /**
  * Turns edits into the smallest possible text change.
  *
- * EnvShield never rewrites a whole `.env` file to change one value: it produces
+ * KayShield never rewrites a whole `.env` file to change one value: it produces
  * a replacement for the value range only, so comments, spacing, ordering and
  * unrelated formatting are untouched, and Git diffs stay one line long.
  *

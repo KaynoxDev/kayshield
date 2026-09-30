@@ -14,7 +14,7 @@ import { DEFAULT_RULES } from '../../src/security/SecretDetector';
  *
  * They are fake, but a literal that *looks* like a credential trips every
  * scanner the repository passes through - GitHub push protection included, and
- * EnvShield's own detector too. Splitting them keeps the tests exact (the code
+ * KayShield's own detector too. Splitting them keeps the tests exact (the code
  * under test still receives a complete, correctly shaped token) while leaving
  * no token-shaped string in the source of a security extension.
  */

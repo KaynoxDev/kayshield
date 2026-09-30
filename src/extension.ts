@@ -1,5 +1,5 @@
 /**
- * EnvShield activation.
+ * KayShield activation.
  *
  * Activation is intentionally cheap: build the state objects, register the
  * providers, and stop. No file is read, no directory is walked and no parsing
@@ -27,7 +27,7 @@ import { WelcomePanel } from './welcome/WelcomePanel';
 
 export function activate(context: vscode.ExtensionContext): void {
   context.subscriptions.push(initializeLogger());
-  logger.info('EnvShield activating');
+  logger.info('KayShield activating');
 
   const configuration = new Configuration();
   const reveals = new RevealRegistry();
@@ -43,7 +43,7 @@ export function activate(context: vscode.ExtensionContext): void {
     streamerMode,
   });
 
-  const treeView = vscode.window.createTreeView('envshield.environment', {
+  const treeView = vscode.window.createTreeView('kayshield.environment', {
     treeDataProvider: tree,
     showCollapseAll: true,
   });
@@ -86,7 +86,7 @@ export function activate(context: vscode.ExtensionContext): void {
     }),
   );
 
-  void vscode.commands.executeCommand('setContext', 'envshield.active', true);
+  void vscode.commands.executeCommand('setContext', 'kayshield.active', true);
 
   if (configuration.settings.scanOnStartup) {
     void scanner
@@ -97,7 +97,7 @@ export function activate(context: vscode.ExtensionContext): void {
 
   void WelcomePanel.showIfFirstRun(context);
 
-  logger.info('EnvShield ready');
+  logger.info('KayShield ready');
 }
 
 export function deactivate(): void {

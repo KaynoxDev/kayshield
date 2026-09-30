@@ -1,5 +1,5 @@
 /**
- * The EnvShield section in the Explorer.
+ * The KayShield section in the Explorer.
  *
  * Lists the environment files of the workspace, and their variables on demand.
  * Files are discovered once and refreshed from a file system watcher; a file is
@@ -104,7 +104,7 @@ export class EnvironmentTreeProvider
 
   async getChildren(element?: EnvTreeItem): Promise<EnvTreeItem[]> {
     if (!this.deps.configuration.settings.enabled) {
-      return [new EnvMessageItem(vscode.l10n.t('EnvShield is disabled'), 'circle-slash')];
+      return [new EnvMessageItem(vscode.l10n.t('KayShield is disabled'), 'circle-slash')];
     }
 
     if (element === undefined) {
@@ -152,7 +152,7 @@ export class EnvironmentTreeProvider
           vscode.l10n.t('{0} protected in this workspace', totalSecrets),
           'shield',
           {
-            command: 'envshield.scanWorkspace',
+            command: 'kayshield.scanWorkspace',
             title: vscode.l10n.t('Scan Workspace'),
           },
         ),

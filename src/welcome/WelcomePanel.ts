@@ -2,7 +2,7 @@
  * First-run experience.
  *
  * A single webview panel, shown once per installation, that states plainly what
- * EnvShield does and - just as importantly - what it cannot do. It contains no
+ * KayShield does and - just as importantly - what it cannot do. It contains no
  * variable, no value and no workspace data of any kind: it is a static page.
  */
 
@@ -10,8 +10,8 @@ import * as vscode from 'vscode';
 import { Configuration } from '../config/Configuration';
 import { createNonce, escapeHtml } from '../utils/html';
 
-const SEEN_KEY = 'envshield.welcomeShown';
-const VIEW_TYPE = 'envshield.welcome';
+const SEEN_KEY = 'kayshield.welcomeShown';
+const VIEW_TYPE = 'kayshield.welcome';
 
 export class WelcomePanel {
   private static current: vscode.WebviewPanel | undefined;
@@ -33,7 +33,7 @@ export class WelcomePanel {
 
     const panel = vscode.window.createWebviewPanel(
       VIEW_TYPE,
-      vscode.l10n.t('Welcome to EnvShield'),
+      vscode.l10n.t('Welcome to KayShield'),
       vscode.ViewColumn.One,
       {
         enableScripts: true,
@@ -50,10 +50,10 @@ export class WelcomePanel {
     panel.webview.onDidReceiveMessage(async (message: { type?: string }) => {
       if (message?.type === 'enable') {
         await Configuration.update('enabled', true);
-        await vscode.window.showInformationMessage(vscode.l10n.t('EnvShield protection is on.'));
+        await vscode.window.showInformationMessage(vscode.l10n.t('KayShield protection is on.'));
         panel.dispose();
       } else if (message?.type === 'configure') {
-        await vscode.commands.executeCommand('envshield.configure');
+        await vscode.commands.executeCommand('kayshield.configure');
       }
     });
 
@@ -79,7 +79,7 @@ function render(webview: vscode.Webview, extensionUri: vscode.Uri): string {
   ];
 
   const limits = vscode.l10n.t(
-    'EnvShield protects what it renders inside VS Code. It cannot mask the integrated terminal, the debug console, another extension, or an application outside the editor.',
+    'KayShield protects what it renders inside VS Code. It cannot mask the integrated terminal, the debug console, another extension, or an application outside the editor.',
   );
 
   return `<!DOCTYPE html>
@@ -98,11 +98,11 @@ function render(webview: vscode.Webview, extensionUri: vscode.Uri): string {
       .welcome li::before { content: '✓'; position: absolute; left: 0; opacity: 0.8; }
       .welcome .actions { display: flex; gap: 8px; margin-bottom: 28px; }
     </style>
-    <title>${escapeHtml(vscode.l10n.t('Welcome to EnvShield'))}</title>
+    <title>${escapeHtml(vscode.l10n.t('Welcome to KayShield'))}</title>
   </head>
   <body>
     <main class="welcome">
-      <h1>${escapeHtml(vscode.l10n.t('Welcome to EnvShield'))}</h1>
+      <h1>${escapeHtml(vscode.l10n.t('Welcome to KayShield'))}</h1>
       <p class="lead">${escapeHtml(
         vscode.l10n.t(
           'Protect your environment variables while coding, streaming or sharing your screen.',

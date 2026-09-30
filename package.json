@@ -1,6 +1,6 @@
 {
-  "name": "envshield",
-  "displayName": "EnvShield",
+  "name": "kayshield",
+  "displayName": "KayShield",
   "description": "%extension.description%",
   "version": "1.0.0",
   "publisher": "KaynoxDev",
@@ -22,10 +22,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/KaynoxDev/envshield.git"
+    "url": "https://github.com/KaynoxDev/kayshield.git"
   },
   "bugs": {
-    "url": "https://github.com/KaynoxDev/envshield/issues"
+    "url": "https://github.com/KaynoxDev/kayshield/issues"
   },
   "sponsor": {
     "url": "https://github.com/sponsors/KaynoxDev"
@@ -46,7 +46,7 @@
   "contributes": {
     "customEditors": [
       {
-        "viewType": "envshield.envEditor",
+        "viewType": "kayshield.envEditor",
         "displayName": "%editor.displayName%",
         "selector": [
           {
@@ -83,121 +83,121 @@
     ],
     "viewsWelcome": [
       {
-        "view": "envshield.environment",
+        "view": "kayshield.environment",
         "contents": "%view.welcome%"
       }
     ],
     "views": {
       "explorer": [
         {
-          "id": "envshield.environment",
+          "id": "kayshield.environment",
           "name": "%view.name%",
           "icon": "$(shield)",
-          "contextualTitle": "EnvShield"
+          "contextualTitle": "KayShield"
         }
       ]
     },
     "commands": [
       {
-        "command": "envshield.openEnvironmentFile",
+        "command": "kayshield.openEnvironmentFile",
         "title": "%cmd.openEnvironmentFile%",
-        "category": "EnvShield",
+        "category": "KayShield",
         "icon": "$(shield)"
       },
       {
-        "command": "envshield.openAsPlainText",
+        "command": "kayshield.openAsPlainText",
         "title": "%cmd.openAsPlainText%",
-        "category": "EnvShield",
+        "category": "KayShield",
         "icon": "$(file-code)"
       },
       {
-        "command": "envshield.hideAllSecrets",
+        "command": "kayshield.hideAllSecrets",
         "title": "%cmd.hideAllSecrets%",
-        "category": "EnvShield",
+        "category": "KayShield",
         "icon": "$(eye-closed)"
       },
       {
-        "command": "envshield.revealAllSecrets",
+        "command": "kayshield.revealAllSecrets",
         "title": "%cmd.revealAllSecrets%",
-        "category": "EnvShield",
+        "category": "KayShield",
         "icon": "$(eye)"
       },
       {
-        "command": "envshield.toggleStreamerMode",
+        "command": "kayshield.toggleStreamerMode",
         "title": "%cmd.toggleStreamerMode%",
-        "category": "EnvShield",
+        "category": "KayShield",
         "icon": "$(broadcast)"
       },
       {
-        "command": "envshield.scanWorkspace",
+        "command": "kayshield.scanWorkspace",
         "title": "%cmd.scanWorkspace%",
-        "category": "EnvShield",
+        "category": "KayShield",
         "icon": "$(search)"
       },
       {
-        "command": "envshield.configure",
+        "command": "kayshield.configure",
         "title": "%cmd.configure%",
-        "category": "EnvShield",
+        "category": "KayShield",
         "icon": "$(gear)"
       },
       {
-        "command": "envshield.revealVariable",
+        "command": "kayshield.revealVariable",
         "title": "%cmd.revealVariable%",
-        "category": "EnvShield",
+        "category": "KayShield",
         "icon": "$(eye)"
       },
       {
-        "command": "envshield.hideVariable",
+        "command": "kayshield.hideVariable",
         "title": "%cmd.hideVariable%",
-        "category": "EnvShield",
+        "category": "KayShield",
         "icon": "$(eye-closed)"
       },
       {
-        "command": "envshield.copyVariableValue",
+        "command": "kayshield.copyVariableValue",
         "title": "%cmd.copyVariableValue%",
-        "category": "EnvShield",
+        "category": "KayShield",
         "icon": "$(copy)"
       },
       {
-        "command": "envshield.refresh",
+        "command": "kayshield.refresh",
         "title": "%cmd.refresh%",
-        "category": "EnvShield",
+        "category": "KayShield",
         "icon": "$(refresh)"
       },
       {
-        "command": "envshield.setDefaultEditor",
+        "command": "kayshield.setDefaultEditor",
         "title": "%cmd.setDefaultEditor%",
-        "category": "EnvShield"
+        "category": "KayShield"
       },
       {
-        "command": "envshield.clearDefaultEditor",
+        "command": "kayshield.clearDefaultEditor",
         "title": "%cmd.clearDefaultEditor%",
-        "category": "EnvShield"
+        "category": "KayShield"
       },
       {
-        "command": "envshield.showWelcome",
+        "command": "kayshield.showWelcome",
         "title": "%cmd.showWelcome%",
-        "category": "EnvShield"
+        "category": "KayShield"
       },
       {
-        "command": "envshield.alwaysMaskVariable",
+        "command": "kayshield.alwaysMaskVariable",
         "title": "%cmd.alwaysMaskVariable%",
-        "category": "EnvShield"
+        "category": "KayShield"
       },
       {
-        "command": "envshield.neverMaskVariable",
+        "command": "kayshield.neverMaskVariable",
         "title": "%cmd.neverMaskVariable%",
-        "category": "EnvShield"
+        "category": "KayShield"
       }
     ],
     "keybindings": [
       {
-        "command": "envshield.toggleStreamerMode",
+        "command": "kayshield.toggleStreamerMode",
         "key": "ctrl+shift+alt+e",
         "mac": "cmd+shift+alt+e"
       },
       {
-        "command": "envshield.hideAllSecrets",
+        "command": "kayshield.hideAllSecrets",
         "key": "ctrl+shift+alt+h",
         "mac": "cmd+shift+alt+h"
       }
@@ -205,118 +205,118 @@
     "menus": {
       "commandPalette": [
         {
-          "command": "envshield.revealVariable",
+          "command": "kayshield.revealVariable",
           "when": "false"
         },
         {
-          "command": "envshield.hideVariable",
+          "command": "kayshield.hideVariable",
           "when": "false"
         },
         {
-          "command": "envshield.copyVariableValue",
+          "command": "kayshield.copyVariableValue",
           "when": "false"
         },
         {
-          "command": "envshield.alwaysMaskVariable",
+          "command": "kayshield.alwaysMaskVariable",
           "when": "false"
         },
         {
-          "command": "envshield.neverMaskVariable",
+          "command": "kayshield.neverMaskVariable",
           "when": "false"
         },
         {
-          "command": "envshield.refresh",
+          "command": "kayshield.refresh",
           "when": "false"
         }
       ],
       "view/title": [
         {
-          "command": "envshield.hideAllSecrets",
-          "when": "view == envshield.environment",
+          "command": "kayshield.hideAllSecrets",
+          "when": "view == kayshield.environment",
           "group": "navigation@1"
         },
         {
-          "command": "envshield.toggleStreamerMode",
-          "when": "view == envshield.environment",
+          "command": "kayshield.toggleStreamerMode",
+          "when": "view == kayshield.environment",
           "group": "navigation@2"
         },
         {
-          "command": "envshield.scanWorkspace",
-          "when": "view == envshield.environment",
+          "command": "kayshield.scanWorkspace",
+          "when": "view == kayshield.environment",
           "group": "navigation@3"
         },
         {
-          "command": "envshield.refresh",
-          "when": "view == envshield.environment",
+          "command": "kayshield.refresh",
+          "when": "view == kayshield.environment",
           "group": "navigation@4"
         }
       ],
       "view/item/context": [
         {
-          "command": "envshield.revealVariable",
-          "when": "view == envshield.environment && viewItem == envshield.variable.masked && !envshield.streamerMode",
+          "command": "kayshield.revealVariable",
+          "when": "view == kayshield.environment && viewItem == kayshield.variable.masked && !kayshield.streamerMode",
           "group": "inline@1"
         },
         {
-          "command": "envshield.hideVariable",
-          "when": "view == envshield.environment && viewItem == envshield.variable.revealed",
+          "command": "kayshield.hideVariable",
+          "when": "view == kayshield.environment && viewItem == kayshield.variable.revealed",
           "group": "inline@1"
         },
         {
-          "command": "envshield.openAsPlainText",
-          "when": "view == envshield.environment && viewItem == envshield.file",
+          "command": "kayshield.openAsPlainText",
+          "when": "view == kayshield.environment && viewItem == kayshield.file",
           "group": "inline@1"
         },
         {
-          "command": "envshield.copyVariableValue",
-          "when": "view == envshield.environment && viewItem =~ /^envshield.variable/",
+          "command": "kayshield.copyVariableValue",
+          "when": "view == kayshield.environment && viewItem =~ /^kayshield.variable/",
           "group": "1_copy"
         },
         {
-          "command": "envshield.alwaysMaskVariable",
-          "when": "view == envshield.environment && viewItem =~ /^envshield.variable/",
+          "command": "kayshield.alwaysMaskVariable",
+          "when": "view == kayshield.environment && viewItem =~ /^kayshield.variable/",
           "group": "2_rules@1"
         },
         {
-          "command": "envshield.neverMaskVariable",
-          "when": "view == envshield.environment && viewItem =~ /^envshield.variable/",
+          "command": "kayshield.neverMaskVariable",
+          "when": "view == kayshield.environment && viewItem =~ /^kayshield.variable/",
           "group": "2_rules@2"
         }
       ],
       "explorer/context": [
         {
-          "command": "envshield.openEnvironmentFile",
+          "command": "kayshield.openEnvironmentFile",
           "when": "resourceFilename =~ /(^\\.env)|(\\.env$)/",
           "group": "navigation@10"
         }
       ],
       "editor/title": [
         {
-          "command": "envshield.openAsPlainText",
-          "when": "activeCustomEditorId == envshield.envEditor",
+          "command": "kayshield.openAsPlainText",
+          "when": "activeCustomEditorId == kayshield.envEditor",
           "group": "navigation@1"
         },
         {
-          "command": "envshield.openEnvironmentFile",
-          "when": "resourceFilename =~ /(^\\.env)|(\\.env$)/ && activeCustomEditorId != envshield.envEditor",
+          "command": "kayshield.openEnvironmentFile",
+          "when": "resourceFilename =~ /(^\\.env)|(\\.env$)/ && activeCustomEditorId != kayshield.envEditor",
           "group": "navigation@1"
         }
       ]
     },
     "configuration": {
-      "title": "EnvShield",
+      "title": "KayShield",
       "properties": {
-        "envshield.enabled": {
+        "kayshield.enabled": {
           "type": "boolean",
           "default": true,
           "description": "%config.enabled%"
         },
-        "envshield.streamerMode": {
+        "kayshield.streamerMode": {
           "type": "boolean",
           "default": false,
           "description": "%config.streamerMode%"
         },
-        "envshield.revealTimeout": {
+        "kayshield.revealTimeout": {
           "type": "number",
           "default": 5000,
           "enum": [
@@ -337,34 +337,34 @@
           ],
           "description": "%config.revealTimeout%"
         },
-        "envshield.maskCharacter": {
+        "kayshield.maskCharacter": {
           "type": "string",
           "default": "•",
           "maxLength": 1,
           "minLength": 1,
           "description": "%config.maskCharacter%"
         },
-        "envshield.maskPreserveLength": {
+        "kayshield.maskPreserveLength": {
           "type": "boolean",
           "default": false,
           "description": "%config.maskPreserveLength%"
         },
-        "envshield.autoDetectSecrets": {
+        "kayshield.autoDetectSecrets": {
           "type": "boolean",
           "default": true,
           "description": "%config.autoDetectSecrets%"
         },
-        "envshield.detectConfigFiles": {
+        "kayshield.detectConfigFiles": {
           "type": "boolean",
           "default": true,
           "description": "%config.detectConfigFiles%"
         },
-        "envshield.protectEnvExample": {
+        "kayshield.protectEnvExample": {
           "type": "boolean",
           "default": false,
           "description": "%config.protectEnvExample%"
         },
-        "envshield.filePatterns": {
+        "kayshield.filePatterns": {
           "type": "array",
           "items": {
             "type": "string"
@@ -375,7 +375,7 @@
           ],
           "description": "%config.filePatterns%"
         },
-        "envshield.secretPatterns": {
+        "kayshield.secretPatterns": {
           "type": "array",
           "items": {
             "type": "object",
@@ -409,7 +409,7 @@
           "default": [],
           "description": "%config.secretPatterns%"
         },
-        "envshield.ignoredVariables": {
+        "kayshield.ignoredVariables": {
           "type": "array",
           "items": {
             "type": "string"
@@ -417,7 +417,7 @@
           "default": [],
           "description": "%config.ignoredVariables%"
         },
-        "envshield.alwaysMask": {
+        "kayshield.alwaysMask": {
           "type": "array",
           "items": {
             "type": "string"
@@ -425,7 +425,7 @@
           "default": [],
           "description": "%config.alwaysMask%"
         },
-        "envshield.neverMask": {
+        "kayshield.neverMask": {
           "type": "array",
           "items": {
             "type": "string"
@@ -441,24 +441,24 @@
           ],
           "description": "%config.neverMask%"
         },
-        "envshield.maskThreshold": {
+        "kayshield.maskThreshold": {
           "type": "number",
           "default": 61,
           "minimum": 0,
           "maximum": 100,
           "description": "%config.maskThreshold%"
         },
-        "envshield.showStatusBar": {
+        "kayshield.showStatusBar": {
           "type": "boolean",
           "default": true,
           "description": "%config.showStatusBar%"
         },
-        "envshield.scanOnStartup": {
+        "kayshield.scanOnStartup": {
           "type": "boolean",
           "default": false,
           "description": "%config.scanOnStartup%"
         },
-        "envshield.configFileGlobs": {
+        "kayshield.configFileGlobs": {
           "type": "array",
           "items": {
             "type": "string"
@@ -508,5 +508,5 @@
     "typescript": "^6.0.3",
     "vitest": "^2.1.8"
   },
-  "homepage": "https://github.com/KaynoxDev/envshield#readme"
+  "homepage": "https://github.com/KaynoxDev/kayshield#readme"
 }
