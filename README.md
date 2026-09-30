@@ -442,6 +442,19 @@ Never include a real secret in an issue, a test or a fixture — even a revoked 
 
 ---
 
+## Supporting the project
+
+EnvShield is free, MIT licensed, and collects nothing - no telemetry, no
+analytics, no account. If it has saved you from showing a token on stream, you
+can support the work through [GitHub
+Sponsors](https://github.com/sponsors/KaynoxDev).
+
+Sponsoring buys no priority and no private support: issues are handled on
+merit, and the extension will never gain a paid tier or a feature locked behind
+one.
+
+---
+
 ## License
 
 MIT. See [LICENSE](LICENSE).

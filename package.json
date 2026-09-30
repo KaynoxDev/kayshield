@@ -27,6 +27,9 @@
   "bugs": {
     "url": "https://github.com/KaynoxDev/envshield/issues"
   },
+  "sponsor": {
+    "url": "https://github.com/sponsors/KaynoxDev"
+  },
   "l10n": "./l10n",
   "main": "./dist/extension.js",
   "activationEvents": [
