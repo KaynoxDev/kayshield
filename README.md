@@ -78,9 +78,6 @@ npm run package
 code --install-extension kayshield-1.0.0.vsix
 ```
 
-Publishing your own build? See [PUBLISHING.md](PUBLISHING.md) — three manifest
-fields have to be replaced first.
-
 ---
 
 ## How it works
@@ -439,19 +436,6 @@ npm run check && npm run test:integration
 ```
 
 Never include a real secret in an issue, a test or a fixture — even a revoked one.
-
----
-
-## Supporting the project
-
-KayShield is free, MIT licensed, and collects nothing - no telemetry, no
-analytics, no account. If it has saved you from showing a token on stream, you
-can support the work through [GitHub
-Sponsors](https://github.com/sponsors/KaynoxDev).
-
-Sponsoring buys no priority and no private support: issues are handled on
-merit, and the extension will never gain a paid tier or a feature locked behind
-one.
 
 ---
 
