@@ -1,41 +1,69 @@
 # Publishing EnvShield
 
-## Before anything: three fields to replace
+## Before anything: one field left to replace
 
-The repository ships with placeholders. Publishing without changing them produces
-a broken Marketplace page.
+| File           | Field       | Current     | Must become                   |
+| -------------- | ----------- | ----------- | ----------------------------- |
+| `package.json` | `publisher` | `envshield` | Your Marketplace publisher ID |
 
-| File           | Field            | Current (placeholder)                        | Must become                   |
-| -------------- | ---------------- | -------------------------------------------- | ----------------------------- |
-| `package.json` | `publisher`      | `envshield`                                  | Your Marketplace publisher ID |
-| `package.json` | `repository.url` | `https://github.com/envshield/envshield.git` | Your real repository          |
-| `package.json` | `bugs.url`       | same                                         | Your real issue tracker       |
+`repository`, `bugs` and `homepage` already point at
+<https://github.com/KaynoxDev/envshield>, and the README images resolve from
+there.
 
 **Why `repository.url` matters more than it looks:** `vsce` rewrites every
-relative image path in `README.md` to
-`<repository>/raw/HEAD/<path>` when packaging. The logo and the four screenshots
-all go through this rewrite. If the repository does not exist or is private, the
-Marketplace page shows five broken images. Verify with:
+relative image path in `README.md` to `<repository>/raw/HEAD/<path>` when
+packaging. The logo and the screenshots all go through this rewrite, so a
+repository that is missing, renamed or private turns the Marketplace page into a
+wall of broken images. Re-check after any change to the README or the repo:
 
 ```bash
-npx vsce package --no-dependencies
-unzip -p envshield-1.0.0.vsix extension/readme.md | grep -o 'https://[^ ")]*\.png'
+npm run package
+unzip -p envshield-1.0.0.vsix extension/readme.md   | grep -oE 'https://[^ ")]*\.png' | sort -u   | while read -r url; do echo "$(curl -s -o /dev/null -w '%{http_code}' -L "$url")  $url"; done
 ```
 
-Every URL printed must resolve in a browser.
+Every line must start with `200`.
 
-The screenshots themselves (`images/screenshot-*.png`) are placeholders and do
-not exist yet. Either produce them and commit them, or remove the Screenshots
-section from `README.md` before publishing.
+## The short path: no token, no Azure DevOps
 
-## One-time setup
+All you strictly need is a Microsoft account and a publisher.
 
-1. **Microsoft account** — any personal account works.
+1. **Create the publisher** —
+   <https://marketplace.visualstudio.com/manage/createpublisher>, signing in
+   with any Microsoft account.
 
-2. **Azure DevOps organization** — <https://dev.azure.com>. The Marketplace uses
-   it only for authentication; you never have to host code there.
+   The **publisher ID is permanent**. It becomes part of the extension URL
+   (`marketplace.visualstudio.com/items?itemName=<publisher>.envshield`) and of
+   the install command, and it cannot be renamed later.
 
-3. **Personal Access Token (PAT)** — Azure DevOps → user icon (top right) →
+2. **Set it in the manifest** — `package.json` → `"publisher": "<your-id>"`. It
+   must match exactly, or the upload is rejected.
+
+3. **Build and upload**
+
+   ```bash
+   npm run package
+   ```
+
+   Then <https://marketplace.visualstudio.com/manage> → your publisher →
+   _New extension_ → _Visual Studio Code_ → drop `envshield-1.0.0.vsix`.
+
+That is the whole process. The trade-off is that every future release means
+repeating the build and the upload by hand.
+
+An Azure DevOps organisation is **not** required for this path. If the sign-up
+flow offers to create one anyway, it is free and it is only a namespace - not a
+company, and unrelated to Azure the cloud platform, which is the paid product
+people usually have in mind.
+
+## The longer path: publishing from the command line
+
+Worth setting up once you release often enough that the manual upload becomes
+tedious. It replaces steps 3 above with a single command.
+
+1. **Azure DevOps organisation** — <https://dev.azure.com>. Free tier, no card.
+   It is used only to issue the token; you never host code there.
+
+2. **Personal Access Token (PAT)** — Azure DevOps → user icon (top right) →
    _Personal access tokens_ → _New Token_:
 
    - **Organization: `All accessible organizations`** — the most common cause of
@@ -43,28 +71,19 @@ section from `README.md` before publishing.
    - **Scopes:** _Custom defined_ → _Marketplace_ → tick **Manage**.
    - Expiration: up to one year.
 
-   Copy the token immediately; it is shown once.
+   Copy the token immediately; it is shown once. It belongs in your terminal and
+   nowhere else - never in a chat, an issue or a commit.
 
-4. **Create the publisher** —
-   <https://marketplace.visualstudio.com/manage/createpublisher>.
+3. **Publish**
 
-   The **publisher ID is permanent** and becomes part of the extension URL
-   (`marketplace.visualstudio.com/items?itemName=<publisher>.envshield`) and of
-   the install command. Choose it carefully; it cannot be renamed later.
-
-5. **Set it in the manifest** — `package.json` → `"publisher": "<your-id>"`. It
-   must match the publisher exactly, or publishing is rejected.
-
-## Publishing
-
-```bash
-npx vsce login <your-publisher-id>   # paste the PAT when prompted
-npx vsce publish
-```
+   ```bash
+   npx vsce login <your-publisher-id>   # paste the PAT when prompted
+   npx vsce publish
+   ```
 
 `vsce publish` runs `vscode:prepublish` first, which is wired to
-`npm run check && npm run build -- --minify` — typecheck, lint, format check and
-the 165 unit tests all have to pass before anything is uploaded. That gate is
+`npm run check && npm run build -- --minify` - typecheck, lint, format check and
+the unit tests all have to pass before anything is uploaded. That gate is
 deliberate: keep it.
 
 The extension appears in search within a few minutes; the page itself is live
@@ -72,7 +91,7 @@ immediately.
 
 ### Releasing a new version
 
-Never edit `version` by hand. Let `vsce` bump the manifest and create the tag:
+Never edit `version` by hand. Let `vsce` bump the manifest:
 
 ```bash
 npx vsce publish patch    # 1.0.0 -> 1.0.1
@@ -80,18 +99,11 @@ npx vsce publish minor    # 1.0.0 -> 1.1.0
 npx vsce publish major    # 1.0.0 -> 2.0.0
 ```
 
-Add the corresponding section to `CHANGELOG.md` first: the Marketplace renders it
-as the extension's _Changelog_ tab.
+Add the matching section to `CHANGELOG.md` first: the Marketplace renders it as
+the extension's _Changelog_ tab.
 
-### Publishing without a PAT
-
-If you would rather not create a token, upload the `.vsix` by hand:
-
-1. `npx vsce package --no-dependencies`
-2. <https://marketplace.visualstudio.com/manage> → your publisher →
-   _New extension_ → _Visual Studio Code_ → drop the `.vsix`.
-
-Same result, but you have to repeat it for every release.
+On the manual path, bump `version` in `package.json` yourself, then rebuild and
+re-upload.
 
 ## Installing locally, without the Marketplace
 
@@ -119,12 +131,13 @@ Tokens come from <https://open-vsx.org> (sign in with GitHub → _Access Tokens_
 
 ## Pre-flight checklist
 
+- [x] `repository.url`, `bugs.url` and `homepage` point at a real public repository
+- [x] The repository is pushed, so the README images resolve
+- [x] Screenshots exist and are committed
+- [x] `LICENSE` names the right copyright holder
+- [x] `CHANGELOG.md` has a section for this version
+- [x] `npm run check` passes
+- [x] `npm run test:integration` passes
+- [x] The `.vsix` was installed locally and opened on a real `.env` file
 - [ ] `publisher` is your real publisher ID
-- [ ] `repository.url` and `bugs.url` point to a real, **public** repository
-- [ ] The repository is pushed, so the README images resolve
-- [ ] Screenshots exist, or the Screenshots section is removed
-- [ ] `LICENSE` names the right copyright holder
-- [ ] `CHANGELOG.md` has a section for this version
-- [ ] `npm run check` passes
-- [ ] `npm run test:integration` passes
-- [ ] Installed the `.vsix` locally and opened a real `.env` file once
+- [ ] No real `.env` is tracked by git (`git ls-files | grep -x .env` must print nothing)
