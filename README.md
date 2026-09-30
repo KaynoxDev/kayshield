@@ -65,7 +65,7 @@ Click the eye to reveal one value. It re-masks itself after a few seconds. Hit `
 From the Marketplace:
 
 ```
-ext install envshield.envshield
+ext install KaynoxDev.envshield
 ```
 
 Or search for **EnvShield** in the Extensions view.

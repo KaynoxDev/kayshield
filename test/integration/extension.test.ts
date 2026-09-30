@@ -12,7 +12,11 @@ import * as vscode from 'vscode';
 import { RevealRegistry } from '../../src/security/RevealRegistry';
 import { ScreenProtection } from '../../src/streamer/ScreenProtection';
 
-const EXTENSION_ID = 'envshield.envshield';
+// Read from the manifest so renaming the publisher cannot silently skip the
+// whole suite: `getExtension` would return undefined and `before` would fail.
+import { publisher, name } from '../../package.json';
+
+const EXTENSION_ID = `${publisher}.${name}`;
 
 function fixture(name: string): vscode.Uri {
   const folder = vscode.workspace.workspaceFolders?.[0];

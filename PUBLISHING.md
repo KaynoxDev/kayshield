@@ -1,14 +1,15 @@
 # Publishing EnvShield
 
-## Before anything: one field left to replace
+## Manifest status
 
-| File           | Field       | Current     | Must become                   |
-| -------------- | ----------- | ----------- | ----------------------------- |
-| `package.json` | `publisher` | `envshield` | Your Marketplace publisher ID |
+Every placeholder is gone: `publisher` is `KaynoxDev`, and `repository`, `bugs`
+and `homepage` point at <https://github.com/KaynoxDev/envshield>, from which the
+README images resolve.
 
-`repository`, `bugs` and `homepage` already point at
-<https://github.com/KaynoxDev/envshield>, and the README images resolve from
-there.
+The extension identifier is `KaynoxDev.envshield`. It is never hardcoded in the
+source - the settings menu reads it from `context.extension.id` and the
+integration suite from the manifest - so changing the publisher cannot leave a
+stale literal behind.
 
 **Why `repository.url` matters more than it looks:** `vsce` rewrites every
 relative image path in `README.md` to `<repository>/raw/HEAD/<path>` when
@@ -139,5 +140,5 @@ Tokens come from <https://open-vsx.org> (sign in with GitHub → _Access Tokens_
 - [x] `npm run check` passes
 - [x] `npm run test:integration` passes
 - [x] The `.vsix` was installed locally and opened on a real `.env` file
-- [ ] `publisher` is your real publisher ID
+- [x] `publisher` is your real publisher ID
 - [ ] No real `.env` is tracked by git (`git ls-files | grep -x .env` must print nothing)

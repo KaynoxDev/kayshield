@@ -48,10 +48,12 @@ export function configure(context: CommandContext) {
       },
       {
         label: '$(gear) ' + vscode.l10n.t('Open EnvShield settings'),
+        // Derived, never hardcoded: the identifier changes with the publisher,
+        // and a stale literal here silently opens an empty settings page.
         run: () =>
           vscode.commands.executeCommand(
             'workbench.action.openSettings',
-            `@ext:envshield.envshield`,
+            `@ext:${context.extensionContext.extension.id}`,
           ),
       },
       {
