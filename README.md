@@ -39,12 +39,10 @@ Click the eye to reveal one value. It re-masks itself after a few seconds. Hit `
 
 ## Screenshots
 
-|                                                        |                                                      |
-| ------------------------------------------------------ | ---------------------------------------------------- |
-| ![The secure editor](images/screenshot-editor.png)     | ![A revealed value](images/screenshot-reveal.png)    |
-| Values masked before the first frame is painted        | One click reveals one value - the status bar says so |
-| ![Streamer Mode](images/screenshot-streamer.png)       | ![The EnvShield menu](images/screenshot-menu.png)    |
-| Streamer Mode: reveal is refused on the extension host | Every action one keystroke away, from the status bar |
+![Streamer Mode](images/screenshot-streamer.png)
+
+_Streamer Mode: every sensitive value stays masked, and reveal is refused on the
+extension host rather than merely hidden in the interface._
 
 ---
 
